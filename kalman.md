@@ -13,13 +13,13 @@ Let's consider 1-D motion of our vehicle to setup the system state and how our s
 
 - **State vector, $x_k$**: The vector consists of the variables we want to update at time step $k$. For our 1-D example, it includes position ($p$) and velocity ($v$). Please note that the state vector is just a list of numbers about the configuration of the system at hand.
 
-\[
+$$
 x_k = \begin{bmatrix} p_x \\ v_x \end{bmatrix}
-\]
+$$
 
 > We don't know what the actual position and velocity are; there can be a whole range os possibilities but some of them are more likely than others. For the Kalman filter, we can assume that both the state variables (position and velocity) are randomly distributed (Gaussian). Thus, each variable has a mean, and a variance (which is the uncertainty here). Please note that the position and velocity will be correlated as we estimate next steps. **How would you capture correlation? A covariance matrix!**
 
-- Correlation matrix, $P_k=Covariance(x)$: This matrix captures the uncertanty of the state vector.
+- **Correlation matrix**, $P_k=Covariance(x)$: This matrix captures the uncertanty of the state vector.
 
 $$P_k = \begin{bmatrix} \sum_{pp} &  \sum_{pv} \\ \sum_{vp} & \sum_{vv} \end{bmatrix}$$
 
@@ -27,7 +27,9 @@ $$P_k = \begin{bmatrix} \sum_{pp} &  \sum_{pv} \\ \sum_{vp} & \sum_{vv} \end{bma
 
 $$F_k = \begin{bmatrix} 1 & \Delta t \\ 0 & 1 \end{bmatrix}$$
 
-So, the predicted state is, $x_{k|k-1} = F_k x_{k-1|k-1} + u_k$; where $u_k$ is the process noise. Now, we have a prediction matrix which gives us our next state, but we still don't know how to update the covariance matrix.
+So, the predicted state is, 
+$$x_{k|k-1} = F_k x_{k-1|k-1} + u_k$$
+where $u_k$ is the process noise. Now, we have a prediction matrix which gives us our next state, but we still don't know how to update the covariance matrix.
 
 $$x_{k|k-1} = F_k x_{k-1|k-1}; P_k = F_k P_{k-1}F^T_k$$
 
@@ -64,11 +66,11 @@ As we have already estimated out prediction step, let's break it down anyway her
 
 ### **Prediction Step (Time Update)**
 
-- **Predict the state estimate**: Using the system model, we project the previous state estimate $x_{k-1|k-1}$ to the current time step:
+- **Predict the state estimate**: Using the system model, we project the previous state estimate $$x_{k-1|k-1}$$ to the current time step:
 
 $$x_{k|k-1} = F_k x_{k-1|k-1}+B_kU_k$$
 
-- **Predict the error covariance**: We also predict the error covariance matrix $P_{k-1|k-1}$, which represents the uncertainty in our previous state estimate, to the current time step:
+- **Predict the error covariance**: We also predict the error covariance matrix $$P_{k-1|k-1}$$, which represents the uncertainty in our previous state estimate, to the current time step:
 
 $$P_{k|k-1} = F_k P_{k-1|k-1}F^T_k + Q_k$$
 

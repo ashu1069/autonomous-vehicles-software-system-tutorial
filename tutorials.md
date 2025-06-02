@@ -1,9 +1,3 @@
-md
----
-layout: default
-title: Tutorials
----
-
 # Tutorial-I: Sensors
 
 > This tutorial excerpt explains the crucial **preprocessing step** for sensor data in autonomous driving systems. It highlights two key functions of this stage: **data format abstraction**, which ensures compatibility with sensors from various manufacturers by converting diverse outputs into a unified format, and **common data processing**, which applies fundamental algorithms to refine raw sensor data by addressing noise and other imperfections. These preprocessing steps are essential for providing reliable information about the vehicle's position, orientation, and velocity, which is foundational for higher-level autonomous driving software modules.
@@ -29,17 +23,13 @@ As mentioned earlier, raw sensor data isn't perfect. It often contains things li
 
 ---
 
-To give you a sense of how specific this processing can be, the sources point to separate designs for preprocessing different types of sensor data, such as:
+To give you a sense of how specific this processing can be, the sources point to separate designs for preprocessing different types of sensor data. Click on the buttons below to explore them:
 
-[GNSS/INS Data Pre-processing Design](gnss-and-ins.md)
-
-[Image Pre-processing Design](image.md)
-
-[Point Cloud Pre-processing Design](lidar.md)
-
-[Radar Objects Data Pre-processing Design](radar.md)
-
-[Synchronization](synchronization.md)
+- [GNSS/INS Data Pre-processing Design](gnss-and-ins.md){: .btn }
+- [Image Pre-processing Design](image.md){: .btn }
+- [Point Cloud Pre-processing Design](lidar.md){: .btn }
+- [Radar Objects Data Pre-processing Design](radar.md){: .btn }
+- [Synchronization](synchronization.md){: .btn }
 
 ---
 

@@ -15,7 +15,7 @@ Let's consider 1-D motion of our vehicle to setup the system state and how our s
 
 \[
 x_k = \begin{bmatrix} p_x \\ v_x \end{bmatrix}
-$$
+\]
 
 > We don't know what the actual position and velocity are; there can be a whole range os possibilities but some of them are more likely than others. For the Kalman filter, we can assume that both the state variables (position and velocity) are randomly distributed (Gaussian). Thus, each variable has a mean, and a variance (which is the uncertainty here). Please note that the position and velocity will be correlated as we estimate next steps. **How would you capture correlation? A covariance matrix!**
 

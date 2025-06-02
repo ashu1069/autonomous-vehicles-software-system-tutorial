@@ -27,136 +27,174 @@
     <script>hljs.highlightAll();</script>
 
     <style>
-        /* Custom styles */
+        /* Modernized styles */
         :root {
-            --primary-color: #159957;
-            --secondary-color: #155799;
-            --text-color: #333;
-            --code-bg: #f6f8fa;
-            --border-color: #dfe2e5;
+            --primary-color: #007bff; /* A more vibrant primary blue */
+            --secondary-color: #6f42c1; /* A contrasting secondary purple */
+            --text-color: #212529; /* Darker text for better readability */
+            --code-bg: #e9ecef; /* Lighter code background */
+            --border-color: #dee2e6; /* Subtle border color */
+            --background-color: #f8f9fa; /* Light background */
+            --heading-color: #343a40; /* Darker headings */
+            --link-color: var(--primary-color);
+            --link-hover-color: #0056b3;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* Modern sans-serif font */
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
         }
 
         .page-header {
-            background-color: var(--primary-color);
-            background-image: linear-gradient(120deg, var(--secondary-color), var(--primary-color));
+            background-image: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+            color: #fff; /* White text on gradient background */
             padding: 2rem 1rem;
+            text-align: center;
+            margin-bottom: 3rem; /* More space below header */
         }
 
         .project-name {
-            font-size: 2.5rem;
+            font-size: 3rem; /* Larger project name */
             margin-bottom: 0.5rem;
+            font-weight: 700; /* Bolder font */
         }
 
         .project-tagline {
-            font-size: 1.5rem;
+            font-size: 1.25rem; /* Slightly smaller tagline */
             font-weight: normal;
             opacity: 0.9;
         }
-        
+
         .main-content {
             max-width: 64rem;
-            padding: 2rem 6rem;
+            padding: 0 2rem; /* Reduced horizontal padding */
             margin: 0 auto;
             font-size: 1.1rem;
-            color: var(--text-color);
+            background-color: #fff; /* White background for main content */
+            padding: 2rem;
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            margin-bottom: 3rem; /* Space before footer */
         }
 
         .main-content h1, .main-content h2, .main-content h3 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
+            margin-top: 2.5rem; /* More space above headings */
+            margin-bottom: 1.5rem; /* More space below headings */
             font-weight: 600;
-            color: var(--primary-color);
+            color: var(--heading-color);
+            border-bottom: 2px solid var(--border-color); /* Underline headings */
+            padding-bottom: 0.5rem;
         }
 
         .main-content code {
             background-color: var(--code-bg);
-            border-radius: 3px;
+            border-radius: 4px;
             font-size: 85%;
             margin: 0;
             padding: 0.2em 0.4em;
             font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            color: #e83e8c; /* Highlight inline code */
         }
 
         .main-content pre {
             background-color: var(--code-bg);
-            border-radius: 3px;
+            border-radius: 4px;
             padding: 16px;
             overflow: auto;
             margin: 1rem 0;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05); /* Inner shadow for code blocks */
         }
 
         .main-content pre code {
             background-color: transparent;
             padding: 0;
-            font-size: 0.9em;
+            font-size: 0.95em; /* Slightly larger code font */
             line-height: 1.5;
+            color: var(--text-color); /* Default text color for code */
         }
 
         .main-content table {
             border-collapse: collapse;
             width: 100%;
             margin: 1rem 0;
-            font-size: 0.9em;
+            font-size: 0.95em;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden; /* Ensure rounded corners work */
         }
 
         .main-content th, .main-content td {
-            border: 1px solid var(--border-color);
+            border: none; /* Remove individual cell borders */
+            border-bottom: 1px solid var(--border-color); /* Add bottom border */
             padding: 8px 13px;
         }
 
         .main-content th {
             background-color: var(--code-bg);
             font-weight: 600;
+            text-align: left;
         }
 
         .main-content img {
             max-width: 100%;
             height: auto;
             display: block;
-            margin: 1.5rem auto;
-            border-radius: 4px;
+            margin: 2rem auto; /* More vertical space around images */
+            border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .main-content blockquote {
             padding: 0 1em;
             color: #6a737d;
-            border-left: 0.25em solid var(--border-color);
+            border-left: 0.25em solid var(--primary-color); /* Use primary color for blockquote border */
             margin: 1rem 0;
             font-style: italic;
+            background-color: rgba(0, 123, 255, 0.05); /* Light background for blockquote */
+            border-radius: 4px;
+            padding: 1em;
         }
 
         .main-content .MathJax {
             font-size: 1.1em;
+            overflow-x: auto; /* Add horizontal scroll for wide equations */
+            padding: 0.5em 0;
         }
 
         .site-footer {
             padding: 2rem 0;
             text-align: center;
-            background-color: var(--code-bg);
-            margin-top: 3rem;
+            background-color: var(--heading-color); /* Darker footer background */
+            color: #fff; /* White text in footer */
         }
 
         .site-footer a {
-            color: var(--primary-color);
+            color: #fff; /* White links in footer */
             text-decoration: none;
         }
 
         .site-footer a:hover {
-            text-decoration: underline;
+            text-decoration: underline; /* Underline on hover */
+            color: rgba(255, 255, 255, 0.8);
         }
 
         /* Navigation */
         .nav-container {
-            background-color: var(--code-bg);
+            background-color: #fff; /* White navigation background */
+            border-bottom: 1px solid var(--border-color); /* Border below nav */
             padding: 1rem 0;
             margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow below nav */
         }
 
         .nav-content {
             max-width: 64rem;
-            margin: 0 auto;
-            padding: 0 6rem;
+            margin: 0 auto; /* Center navigation */
+            padding: 0 2rem;
         }
 
         .nav-links {
@@ -168,12 +206,13 @@
         }
 
         .nav-links a {
-            color: var(--text-color);
+            color: var(--heading-color); /* Darker link color */
             text-decoration: none;
             font-weight: 500;
+            padding: 0.5rem 0; /* Vertical padding for larger click area */
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a:focus {
             color: var(--primary-color);
         }
 

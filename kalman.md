@@ -103,7 +103,7 @@ $$x_{k|k} = x_{k|k-1}+K_k(z_k-H_kx_{k|k-1})$$
 
 $$P_{k|k}=(I-K_kH_k)P_{k|k-1}$$
 
-```python
+```
 import numpy as np
 
 class KalmanFilter1D:

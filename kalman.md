@@ -25,7 +25,7 @@ $$P_k = \begin{bmatrix} \sum_{pp} &  \sum_{pv} \\ \sum_{vp} & \sum_{vv} \end{bma
 
 $$F_k = \begin{bmatrix} 1 & \Delta t \\ 0 & 1 \end{bmatrix}$$
 
-So, the predicted state is, $x_{k|k-1} = F_k x_{k-1|k-1} + u_k$; where $u_k$ is the process noise. Now, we have a prediction matrix which gives us our next state, but we still don't know how to update the covariance matrix.
+So, the predicted state is, $$x_{k|k-1} = F_k x_{k-1|k-1} + u_k$$; where $u_k$ is the process noise. Now, we have a prediction matrix which gives us our next state, but we still don't know how to update the covariance matrix.
 
 $$x_{k|k-1} = F_k x_{k-1|k-1}; P_k = F_k P_{k-1}F^T_k$$
 
@@ -35,7 +35,7 @@ Let's say we know the expected acceleration $a$ due to the throttle setting or c
 
 $$p_x = p_{k-1}+\Delta tv_{k-1}+0.5*a\Delta t^2; v_x = v_{k-1}+a\Delta t$$
 
-In matrix form, $x_{k|k-1} = F_kx_{k-1|k-1}+\begin{bmatrix}\Delta t^2/2 \\ \Delta t \end{bmatrix}a = F_kx_{k-1|k-1} + B_kU_k$
+In matrix form, \[x_{k|k-1} = F_kx_{k-1|k-1}+\begin{bmatrix}\Delta t^2/2 \\ \Delta t \end{bmatrix}a = F_kx_{k-1|k-1} + B_kU_k\]
 
 $B_k$ is the control matrix and $U_k$ is the control vector, altho for very simple systems we can ignore these. Now, one last thing is that the process model is not perfect; there are always unmodeled disturbances and uncertainties. We represent this as process noise $w_k$, which is assumed to be a zero-mean Gaussian random variable with covariance matrix $Q_k$: $w_k \approx N(0, Q_k)$. For our 1-D example, Q_k might look like, 
 
@@ -83,7 +83,7 @@ where $k = \sigma_0^2/(\sigma_0^2+\sigma_1^2)$, and hence,
 
 $$\mu^{'} = \mu_0+k(\mu_1-\mu_0); \sigma^{'2}=\sigma_0^2-k\sigma_0^2$$
 
-In matrix form, $K = \sum_0(\sum_0+\sum_1)^{-1}$
+In matrix form, $$K = \sum_0(\sum_0+\sum_1)^{-1}$$
 
 - **Update the state estimate**: We correct the predicted state estimate using the actual measurement $z_k$ and the Kalman gain,
 

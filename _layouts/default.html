@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title }}</title>
+    
     <!-- MathJax Configuration -->
     <script type="text/javascript" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
@@ -13,11 +15,110 @@
                 inlineMath: [['$','$'], ['\\(','\\)']],
                 displayMath: [['$$','$$'], ['\\[','\\]']],
                 processEscapes: true
+            },
+            "HTML-CSS": {
+                linebreaks: { automatic: true },
+                availableFonts: ["STIX"],
+                preferredFont: "STIX",
+                webFont: "STIX-Web",
+                imageFont: null,
+                undefinedFamily: "serif"
             }
         });
     </script>
+
+    <!-- Code highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <style>
+        /* Custom styles */
+        .page-header {
+            background-color: #159957;
+            background-image: linear-gradient(120deg, #155799, #159957);
+        }
+        
+        .main-content {
+            max-width: 64rem;
+            padding: 2rem 6rem;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .main-content h1, .main-content h2, .main-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: normal;
+            color: #159957;
+        }
+
+        .main-content code {
+            background-color: #f3f4f6;
+            border-radius: 3px;
+            font-size: 85%;
+            margin: 0;
+            padding: 0.2em 0.4em;
+        }
+
+        .main-content pre {
+            background-color: #f3f4f6;
+            border-radius: 3px;
+            padding: 16px;
+            overflow: auto;
+        }
+
+        .main-content pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        .main-content table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 16px 0;
+        }
+
+        .main-content th, .main-content td {
+            border: 1px solid #dfe2e5;
+            padding: 6px 13px;
+        }
+
+        .main-content th {
+            background-color: #f6f8fa;
+        }
+
+        .main-content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 16px auto;
+        }
+
+        .main-content blockquote {
+            padding: 0 1em;
+            color: #6a737d;
+            border-left: 0.25em solid #dfe2e5;
+            margin: 0;
+        }
+
+        .main-content .MathJax {
+            font-size: 1.1em;
+        }
+    </style>
 </head>
 <body>
-    {{ content }}
+    <header class="page-header">
+        <h1 class="project-name">{{ page.title }}</h1>
+        <h2 class="project-tagline">{{ site.description }}</h2>
+    </header>
+
+    <main class="main-content">
+        {{ content }}
+    </main>
+
+    <footer class="site-footer">
+        <span class="site-footer-owner">This tutorial is maintained by <a href="https://ashu1069.github.io/">Ashutosh Kumar</a>.</span>
+    </footer>
 </body>
 </html> 

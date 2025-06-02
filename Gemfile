@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem "github-pages", group: :jekyll_plugins
-gem "jekyll-theme-minimal"
+gem "jekyll-theme-cayman"
 gem "jekyll-katex"
 gem "jekyll-sitemap"
 gem "jekyll-gist"

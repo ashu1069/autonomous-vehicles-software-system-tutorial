@@ -1,3 +1,6 @@
+title: Autonomous Vehicles Software System Tutorial
+description: A comprehensive tutorial on autonomous vehicle software systems
+theme: jekyll-theme-minimal
 markdown: kramdown
 kramdown:
   math_engine: mathjax
@@ -8,4 +11,12 @@ plugins:
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
-  - jemoji 
+  - jemoji
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .gitignore 

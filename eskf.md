@@ -84,7 +84,9 @@ $$
 
 - **Reset the error state**: After updating the nominal state, we reset the error state to zero, as its effect has been incorporated into the nominal state. This is crucial for the ESKF approach: $\(\delta x^{'}_k=0\)$.
 
-```
+### Code Implementation
+
+```python
 class ESKF:
     """
     Implements an Error State Kalman Filter for systems with nonlinear dynamics,

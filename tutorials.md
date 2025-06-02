@@ -38,9 +38,3 @@ To give you a sense of how specific this processing can be, the sources point to
 NOTE:
 
 The material is inspired from the [Autoware](https://autowarefoundation.github.io/autoware-documentation/main/) documentation and some figures are directly copied.
-
-## Author
-
-Ashutosh Kumar
-
-Website**: [https://ashu1069.github.io/](https://ashu1069.github.io/)**

@@ -10,14 +10,14 @@
 | C (channel) | `uint16` | `flase` | Channel ID of the laser that measured the point |
 | A (azimuth) | `float32` | `true` | `atan2(Y,X)`, Horizontal angle from the lidar origin to the point |
 | E (elevation) | `float32` | `true` | `atan2(Z,D)`, Vertical angle from the lidar origin to the point |
-| D (distance | `float32` | `true` | `hypot(X,Y,Z)`, Euclidean distance from the lidar origin to the point |
+| D (distance) | `float32` | `true` | `hypot(X,Y,Z)`, Euclidean distance from the lidar origin to the point |
 | T (time) | `uint32` | `flase` | Nanoseconds passed since the time of the header when this point was measured |
 
 ![image.png](assets/lidar_img.png)
 
 ## Input Acquisition & Synchronization
 
-This stage handles the raw data stream from one or multiple LiDAR sensors and we should be able to process different LiDAR data formats (e.g., point clouds in `.pcd`, `.pcd`, or proprietary formats.
+This stage handles the raw data stream from one or multiple LiDAR sensors and we should be able to process different LiDAR data formats (e.g., point clouds in `.pcd`, `.pcd`, or proprietary formats).
 
 - **Timestamping and Synchronization**
 - **Data Buffering:** Temporarily storing incoming data can help manage varying data rates and ensure smooth processing.

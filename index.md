@@ -13,7 +13,6 @@ This comprehensive tutorial series is designed for autonomous vehicle enthusiast
 - Understanding sensor data preprocessing
 - Kalman Filter implementation
 - Error State Kalman Filter (ESKF)
-- Sensor fusion techniques
 
 ### 2. Coming Soon
 - Perception systems
@@ -28,7 +27,6 @@ The first tutorial focuses on the sensor stack, which is the foundation of any a
 - Sensor data preprocessing techniques
 - Implementation of Kalman filters
 - Advanced filtering methods like ESKF
-- Best practices for sensor fusion
 
 ## Prerequisites
 
@@ -48,8 +46,8 @@ Feel free to contribute to this tutorial series by:
 
 ## About the Author
 
-This tutorial series is maintained by [Ashutosh Kumar](https://ashu1069.github.io/), an autonomous vehicle enthusiast and researcher.
+This tutorial series is maintained by [Ashutosh Kumar](https://ashu1069.github.io/).
 
 ## License
 
-This tutorial series is licensed under the MIT License - see the LICENSE file for details.
+This tutorial series is licensed under the APACHE 2.0 License - see the LICENSE file for details.

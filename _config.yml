@@ -1,0 +1,11 @@
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-katex
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jemoji 

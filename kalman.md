@@ -35,7 +35,7 @@ Let's say we know the expected acceleration $a$ due to the throttle setting or c
 
 $$p_x = p_{k-1}+\Delta tv_{k-1}+0.5*a\Delta t^2; v_x = v_{k-1}+a\Delta t$$
 
-In matrix form, \[x_{k|k-1} = F_kx_{k-1|k-1}+\begin{bmatrix}\Delta t^2/2 \\ \Delta t \end{bmatrix}a = F_kx_{k-1|k-1} + B_kU_k\]
+In matrix form, $$x_{k|k-1} = F_kx_{k-1|k-1}+\begin{bmatrix}\Delta t^2/2 \\ \Delta t \end{bmatrix}a = F_kx_{k-1|k-1} + B_kU_k$$
 
 $B_k$ is the control matrix and $U_k$ is the control vector, altho for very simple systems we can ignore these. Now, one last thing is that the process model is not perfect; there are always unmodeled disturbances and uncertainties. We represent this as process noise $w_k$, which is assumed to be a zero-mean Gaussian random variable with covariance matrix $Q_k$: $w_k \approx N(0, Q_k)$. For our 1-D example, Q_k might look like, 
 

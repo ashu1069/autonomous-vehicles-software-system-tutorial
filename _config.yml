@@ -1,6 +1,13 @@
 title: Autonomous Vehicles Software System Tutorial
-description: A comprehensive tutorial on autonomous vehicle software systems
+description: A comprehensive tutorial series on autonomous vehicle software systems, starting with sensor stack fundamentals
+baseurl: "/autonomous-vehicles-software-system-tutorial"
+url: "https://ashu1069.github.io"
+
+# Theme settings
 theme: jekyll-theme-cayman
+show_downloads: true
+
+# Build settings
 markdown: kramdown
 kramdown:
   math_engine: mathjax
@@ -8,13 +15,29 @@ kramdown:
   syntax_highlighter_opts:
     block:
       line_numbers: true
+      start_line: 1
 
+# Plugins
 plugins:
   - jekyll-katex
   - jekyll-sitemap
   - jekyll-gist
 
-# Build settings
+# Collections
+collections:
+  tutorials:
+    output: true
+    permalink: /tutorials/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "tutorials"
+    values:
+      layout: "default"
+
+# Exclude from processing
 exclude:
   - Gemfile
   - Gemfile.lock

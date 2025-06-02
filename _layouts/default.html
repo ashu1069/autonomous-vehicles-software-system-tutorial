@@ -3,29 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title }}</title>
+    <title>{{ page.title }} - {{ site.title }}</title>
     
     <!-- MathJax Configuration -->
-    <script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-    </script>
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [['$','$'], ['\\(','\\)']],
-                displayMath: [['$$','$$'], ['\\[','\\]']],
-                processEscapes: true
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
             },
-            "HTML-CSS": {
-                linebreaks: { automatic: true },
-                availableFonts: ["STIX"],
-                preferredFont: "STIX",
-                webFont: "STIX-Web",
-                imageFont: null,
-                undefinedFamily: "serif"
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
             }
-        });
+        };
     </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <!-- Code highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
@@ -34,9 +28,29 @@
 
     <style>
         /* Custom styles */
+        :root {
+            --primary-color: #159957;
+            --secondary-color: #155799;
+            --text-color: #333;
+            --code-bg: #f6f8fa;
+            --border-color: #dfe2e5;
+        }
+
         .page-header {
-            background-color: #159957;
-            background-image: linear-gradient(120deg, #155799, #159957);
+            background-color: var(--primary-color);
+            background-image: linear-gradient(120deg, var(--secondary-color), var(--primary-color));
+            padding: 2rem 1rem;
+        }
+
+        .project-name {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tagline {
+            font-size: 1.5rem;
+            font-weight: normal;
+            opacity: 0.9;
         }
         
         .main-content {
@@ -44,81 +58,159 @@
             padding: 2rem 6rem;
             margin: 0 auto;
             font-size: 1.1rem;
+            color: var(--text-color);
         }
 
         .main-content h1, .main-content h2, .main-content h3 {
             margin-top: 2rem;
             margin-bottom: 1rem;
-            font-weight: normal;
-            color: #159957;
+            font-weight: 600;
+            color: var(--primary-color);
         }
 
         .main-content code {
-            background-color: #f3f4f6;
+            background-color: var(--code-bg);
             border-radius: 3px;
             font-size: 85%;
             margin: 0;
             padding: 0.2em 0.4em;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
         }
 
         .main-content pre {
-            background-color: #f3f4f6;
+            background-color: var(--code-bg);
             border-radius: 3px;
             padding: 16px;
             overflow: auto;
+            margin: 1rem 0;
         }
 
         .main-content pre code {
             background-color: transparent;
             padding: 0;
+            font-size: 0.9em;
+            line-height: 1.5;
         }
 
         .main-content table {
             border-collapse: collapse;
             width: 100%;
-            margin: 16px 0;
+            margin: 1rem 0;
+            font-size: 0.9em;
         }
 
         .main-content th, .main-content td {
-            border: 1px solid #dfe2e5;
-            padding: 6px 13px;
+            border: 1px solid var(--border-color);
+            padding: 8px 13px;
         }
 
         .main-content th {
-            background-color: #f6f8fa;
+            background-color: var(--code-bg);
+            font-weight: 600;
         }
 
         .main-content img {
             max-width: 100%;
             height: auto;
             display: block;
-            margin: 16px auto;
+            margin: 1.5rem auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .main-content blockquote {
             padding: 0 1em;
             color: #6a737d;
-            border-left: 0.25em solid #dfe2e5;
-            margin: 0;
+            border-left: 0.25em solid var(--border-color);
+            margin: 1rem 0;
+            font-style: italic;
         }
 
         .main-content .MathJax {
             font-size: 1.1em;
         }
+
+        .site-footer {
+            padding: 2rem 0;
+            text-align: center;
+            background-color: var(--code-bg);
+            margin-top: 3rem;
+        }
+
+        .site-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .site-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation */
+        .nav-container {
+            background-color: var(--code-bg);
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .nav-content {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 0 6rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1rem;
+            }
+            .nav-content {
+                padding: 0 1rem;
+            }
+        }
     </style>
 </head>
 <body>
     <header class="page-header">
-        <h1 class="project-name">{{ page.title }}</h1>
+        <h1 class="project-name">{{ site.title }}</h1>
         <h2 class="project-tagline">{{ site.description }}</h2>
     </header>
+
+    <nav class="nav-container">
+        <div class="nav-content">
+            <ul class="nav-links">
+                <li><a href="{{ site.baseurl }}/">Home</a></li>
+                <li><a href="{{ site.baseurl }}/tutorials">Tutorials</a></li>
+                <li><a href="{{ site.baseurl }}/about">About</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <main class="main-content">
         {{ content }}
     </main>
 
     <footer class="site-footer">
-        <span class="site-footer-owner">This tutorial is maintained by <a href="https://ashu1069.github.io/">Ashutosh Kumar</a>.</span>
+        <span class="site-footer-owner">
+            This tutorial series is maintained by <a href="https://ashu1069.github.io/">Ashutosh Kumar</a>.
+        </span>
     </footer>
 </body>
 </html> 

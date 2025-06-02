@@ -21,15 +21,15 @@ x_k = \begin{bmatrix} p_x \\ v_x \end{bmatrix}
 
 - Correlation matrix, $P_k=Covariance(x)$: This matrix captures the uncertanty of the state vector.
 
-\[P_k = \begin{bmatrix} \sum_{pp} &  \sum_{pv} \\ \sum_{vp} & \sum_{vv} \end{bmatrix}\]
+$$P_k = \begin{bmatrix} \sum_{pp} &  \sum_{pv} \\ \sum_{vp} & \sum_{vv} \end{bmatrix}$$
 
 - **Process Model, $F_k$**: This matrix describes how the state evolves from time step $k-1$ to $k$ in the absence of any measurements. Assuming a constant velocity model over a small time step $\Delta t$,
 
-\[F_k = \begin{bmatrix} 1 & \Delta t \\ 0 & 1 \end{bmatrix}\]
+$$F_k = \begin{bmatrix} 1 & \Delta t \\ 0 & 1 \end{bmatrix}$$
 
-So, the predicted state is, \(x_{k|k-1} = F_k x_{k-1|k-1} + u_k\); where \(u_k\) is the process noise. Now, we have a prediction matrix which gives us our next state, but we still don't know how to update the covariance matrix.
+So, the predicted state is, $x_{k|k-1} = F_k x_{k-1|k-1} + u_k$; where $u_k$ is the process noise. Now, we have a prediction matrix which gives us our next state, but we still don't know how to update the covariance matrix.
 
-\[x_{k|k-1} = F_k x_{k-1|k-1}; P_k = F_k P_{k-1}F^T_k\]
+$$x_{k|k-1} = F_k x_{k-1|k-1}; P_k = F_k P_{k-1}F^T_k$$
 
 > Till now, we have discussed about the intrinsics, what about the external influences and uncertainty—**how the outside world can affect our system?**
 
@@ -37,19 +37,20 @@ Let's say we know the expected acceleration $a$ due to the throttle setting or c
 
 $$p_x = p_{k-1}+\Delta tv_{k-1}+0.5*a\Delta t^2; v_x = v_{k-1}+a\Delta t$$
 
-In matrix form, $$x_{k|k-1} = F_kx_{k-1|k-1}+\begin{bmatrix}\Delta t^2/2 \\ \Delta t \end{bmatrix}a = F_kx_{k-1|k-1} + B_kU_k$$
+In matrix form, 
+$$x_{k|k-1} = F_kx_{k-1|k-1}+\begin{bmatrix}\Delta t^2/2 \\ \Delta t \end{bmatrix}a = F_kx_{k-1|k-1} + B_kU_k$$
 
-\(B_k\) is the control matrix and \(U_k\) is the control vector, altho for very simple systems we can ignore these. Now, one last thing is that the process model is not perfect; there are always unmodeled disturbances and uncertainties. We represent this as process noise \(w_k\), which is assumed to be a zero-mean Gaussian random variable with covariance matrix \(Q_k\): \(w_k \approx N(0, Q_k)\). For our 1-D example, \(Q_k\) might look like,
+$B_k$ is the control matrix and $U_k$ is the control vector, altho for very simple systems we can ignore these. Now, one last thing is that the process model is not perfect; there are always unmodeled disturbances and uncertainties. We represent this as process noise $w_k$, which is assumed to be a zero-mean Gaussian random variable with covariance matrix $Q_k$: $w_k \approx N(0, Q_k)$. For our 1-D example, $Q_k$ might look like,
 
-\[Q_k = \begin{bmatrix}\sigma_p^2 & 0 \\ 0 & \sigma_v^2\end{bmatrix}\]
+$$Q_k = \begin{bmatrix}\sigma_p^2 & 0 \\ 0 & \sigma_v^2\end{bmatrix}$$
 
 Now, our complete prediction step looks like, 
 
-\[x_{k|k-1} = F_k x_{k-1|k-1}+B_kU_k; P_{k|k-1} = F_k P_{k-1|k-1}F^T_k + Q_k\]
+$$x_{k|k-1} = F_k x_{k-1|k-1}+B_kU_k; P_{k|k-1} = F_k P_{k-1|k-1}F^T_k + Q_k$$
 
 > In other words, the new best estimate is a prediction made from previous best estimate, plus a correction for unknown external influences.
 
-We have a fuzzy estimate of where our 1-D system might be, given by \(x_k\) and \(p_x\), let's get some data from our sensors!
+We have a fuzzy estimate of where our 1-D system might be, given by $x_k$ and $p_x$, let's get some data from our sensors!
 
 ### How to refine estimates with sensor data measurements?
 
@@ -65,35 +66,36 @@ As we have already estimated out prediction step, let's break it down anyway her
 
 - **Predict the state estimate**: Using the system model, we project the previous state estimate $x_{k-1|k-1}$ to the current time step:
 
-\[x_{k|k-1} = F_k x_{k-1|k-1}+B_kU_k\]
+$$x_{k|k-1} = F_k x_{k-1|k-1}+B_kU_k$$
 
 - **Predict the error covariance**: We also predict the error covariance matrix $P_{k-1|k-1}$, which represents the uncertainty in our previous state estimate, to the current time step:
 
-\[P_{k|k-1} = F_k P_{k-1|k-1}F^T_k + Q_k\]
+$$P_{k|k-1} = F_k P_{k-1|k-1}F^T_k + Q_k$$
 
 ### Update Step (Measurement Update)
 
 - **Compute the Kalman Gain**, $K_k$: This determines how much weight to give to the new measurement versus the prediction, depends on the uncertainties in both the prediction and the measurements:
 
-\[K_k = P_{k|k-1}H^T_k(H_kP_{k|k-1}H^T_k+R_k)^{-1}\]
+$$K_k = P_{k|k-1}H^T_k(H_kP_{k|k-1}H^T_k+R_k)^{-1}$$
 
 In simple terms, what happens when two Gaussians interact? What's the new mean and new variance? 
 
-\[\mu^{'} = \mu_0 + \sigma_o^2(\mu_1-\mu_0)/(\sigma_0^2+\sigma_1^2);\sigma^{'2}=\sigma_0^2 - \sigma_0^4/(\sigma_0^2+\sigma_1^2)\]
+$$\mu^{'} = \mu_0 + \sigma_o^2(\mu_1-\mu_0)/(\sigma_0^2+\sigma_1^2);\sigma^{'2}=\sigma_0^2 - \sigma_0^4/(\sigma_0^2+\sigma_1^2)$$
 
-where \(k = \sigma_0^2/(\sigma_0^2+\sigma_1^2)\), and hence,
+where $k = \sigma_0^2/(\sigma_0^2+\sigma_1^2)$, and hence,
 
-\[\mu^{'} = \mu_0+k(\mu_1-\mu_0); \sigma^{'2}=\sigma_0^2-k\sigma_0^2\]
+$$\mu^{'} = \mu_0+k(\mu_1-\mu_0); \sigma^{'2}=\sigma_0^2-k\sigma_0^2$$
 
-In matrix form, $$K = \sum_0(\sum_0+\sum_1)^{-1}$$
+In matrix form, 
+$$K = \sum_0(\sum_0+\sum_1)^{-1}$$
 
 - **Update the state estimate**: We correct the predicted state estimate using the actual measurement $z_k$ and the Kalman gain,
 
-\[x_{k|k} = x_{k|k-1}+K_k(z_k-H_kx_{k|k-1})\]
+$$x_{k|k} = x_{k|k-1}+K_k(z_k-H_kx_{k|k-1})$$
 
 - **Update the error covariance**: We also update the error covariance matrix to reflect the incorporation of the new measurement:
 
-\[P_{k|k}=(I-K_kH_k)P_{k|k-1}\]
+$$P_{k|k}=(I-K_kH_k)P_{k|k-1}$$
 
 ```python
 import numpy as np

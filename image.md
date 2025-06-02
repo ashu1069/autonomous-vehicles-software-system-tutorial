@@ -21,7 +21,7 @@ In autonomous driving, the ability to perceive the environment accurately and re
 ### Input Acquisition & Format Handling
 
 - **Data acquisition**: Capturing images from RGB and thermal cameras → synchronize data streams from different sensors.
-- **Format Decoding**: Decode compressed formates (e.g. JPEG, PNG) to raw pixel data and handle raw formats (e.g., Bayer) using [demosaicing](https://www.notion.so/Image-Pre-processing-Design-1eb8d094e4bf802bb6d3cd5875931bec?pvs=21) using OpenCV, LibTIFF and more.
+- **Format Decoding**: Decode compressed formates (e.g. JPEG, PNG) to raw pixel data and handle raw formats (e.g., Bayer) using demosaicing using OpenCV, LibTIFF and more.
 - **Data Type Conversion**: Convert images to a standard data type (e.g., float32) for processing; handle different bit depths (8-bit/16-bit) appropriately; *for thermal images* → convert raw sensor readings to temperature values.
 
 ### Image Correction & Enhancement

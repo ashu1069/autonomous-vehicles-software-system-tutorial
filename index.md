@@ -25,15 +25,15 @@ As mentioned earlier, raw sensor data isn't perfect. It often contains things li
 
 To give you a sense of how specific this processing can be, the sources point to separate designs for preprocessing different types of sensor data, such as:
 
-[GNSS/INS Data Pre-processing Design](https://www.notion.so/GNSS-INS-Data-Pre-processing-Design-1ea8d094e4bf80609f51c2215f28137c?pvs=21)
+[GNSS/INS Data Pre-processing Design](gnss-and-ins.md)
 
-[Image Pre-processing Design](https://www.notion.so/Image-Pre-processing-Design-1eb8d094e4bf802bb6d3cd5875931bec?pvs=21)
+[Image Pre-processing Design](image.md)
 
-[Point Cloud Pre-processing Design](https://www.notion.so/Point-Cloud-Pre-processing-Design-1eb8d094e4bf8091aeacfb88fda8118c?pvs=21)
+[Point Cloud Pre-processing Design](lidar.md)
 
-[Radar Objects Data Pre-processing Design](https://www.notion.so/Radar-Objects-Data-Pre-processing-Design-1eb8d094e4bf80f1a0b9fbabe630b7ee?pvs=21)
+[Radar Objects Data Pre-processing Design](radar.md)
 
-[Synchronization](https://www.notion.so/Synchronization-1f28d094e4bf805b8c79dc4335a61992?pvs=21)
+[Synchronization](synchronization.md)
 
 ---
 

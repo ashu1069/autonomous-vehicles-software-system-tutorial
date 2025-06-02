@@ -1,6 +1,5 @@
 # Explanation & Implementation
 
-[Code](https://www.notion.so/Explanation-Implementation-1ea8d094e4bf80e2af4ee808bff5a10d?pvs=21)
 
 The standard Kalman filter works optimally for linear systems with Gaussian noise. However, autonomous driving systems often involve nonlinear dynamics (e.g., vehicle motion models at high speeds or with significant steering) and nonlinear measurement models (e.g., relating camera images to vehicle pose).
 

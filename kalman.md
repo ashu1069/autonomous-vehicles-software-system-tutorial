@@ -66,11 +66,15 @@ As we have already estimated out prediction step, let's break it down anyway her
 
 ### **Prediction Step (Time Update)**
 
-- **Predict the state estimate**: Using the system model, we project the previous state estimate $$x_{k-1|k-1}$$ to the current time step:
+- **Predict the state estimate**: Using the system model, we project the previous state estimate 
+$$x_{k-1|k-1}$$ 
+to the current time step:
 
 $$x_{k|k-1} = F_k x_{k-1|k-1}+B_kU_k$$
 
-- **Predict the error covariance**: We also predict the error covariance matrix $$P_{k-1|k-1}$$, which represents the uncertainty in our previous state estimate, to the current time step:
+- **Predict the error covariance**: We also predict the error covariance matrix 
+$$P_{k-1|k-1}$$
+of the previous state estimate, which represents the uncertainty in our previous state estimate, to the current time step:
 
 $$P_{k|k-1} = F_k P_{k-1|k-1}F^T_k + Q_k$$
 

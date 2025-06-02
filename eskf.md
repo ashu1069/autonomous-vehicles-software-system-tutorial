@@ -11,7 +11,7 @@ The Error State Kalman Filter (ESKF) is a powerful extension that addresses thes
 - Nominal State (x’): Our best estimate of the true state; evolves according to the (nonlinear) system dynamics.
 - Error State ($\delta x$): The small difference between the true state and the nominal state
 
-\[
+$$
 x = x' \oplus \delta x
 $$
 
@@ -24,8 +24,12 @@ $$
 
 ### Prediction Step
 
-- **Propagate the nominal state**: We use the nonlinear system dynamics to predict the nominal state: $x^{'}_{k|k-1}=f(x^{'}_{k-1|k-1},u_k,0)$. Here, we have ignored the process noise as it’s accounted for in the error state covariance.
-- **Linearize the system dynamics**: We linearize the nonlinear function $f$ around the nominal state, $x^{'}_{k-1|k-1}$ to obtain the Jacobian matrix $F_k$ (this was Process Model matrix for the standard Kalman Filter—1-D configuration):
+- **Propagate the nominal state**: We use the nonlinear system dynamics to predict the nominal state: 
+$$x^{'}_{k|k-1}=f(x^{'}_{k-1|k-1},u_k,0)$$
+ Here, we have ignored the process noise as it’s accounted for in the error state covariance.
+- **Linearize the system dynamics**: We linearize the nonlinear function $f$ around the nominal state, 
+$$x^{'}_{k-1|k-1}$$
+to obtain the Jacobian matrix $F_k$ (this was Process Model matrix for the standard Kalman Filter—1-D configuration):
 
 $$
 \delta x_k \approx F_k\delta x_{k-1}+G_kw_k
@@ -42,13 +46,16 @@ $$
 ### Update Step
 
 - **Linearize the measurement model**: We linearize the nonlinear measurement function h around the predicted nominal state $x^{'}_{k|k-1}$ to obtain the Jacobian matrix $H_k$: 
-where δzk=zk−h(x^k∣k−1,0) is the measurement residual.
+where 
+$$δzk=zk−h(x^k∣k−1,0)$$ is the measurement residual.
 
 $$
 \delta z_k \approx H_k\delta x_{k|k-1}+v_k
 $$
 
-where $\delta z_k=z_k-h(x^{'}_{k|k-1},0)$ is the measurement residual.
+where 
+$\delta z_k=z_k-h(x^{'}_{k|k-1},0)$ 
+is the measurement residual.
 
 - **Compute the Kalman Gain**:
 
@@ -68,7 +75,7 @@ For additive states, this is simply addition. For orientation, this involves upd
 $$
 x^{'}_{k|k}=x^{'}_{k|k-1}\oplus \delta x^{'}_k
 $$
-\]
+
 - **Update the error state covariance**:
 
 $$

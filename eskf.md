@@ -11,7 +11,7 @@ The Error State Kalman Filter (ESKF) is a powerful extension that addresses thes
 - Nominal State (x’): Our best estimate of the true state; evolves according to the (nonlinear) system dynamics.
 - Error State ($\delta x$): The small difference between the true state and the nominal state
 
-$$
+\[
 x = x' \oplus \delta x
 $$
 
@@ -68,14 +68,14 @@ For additive states, this is simply addition. For orientation, this involves upd
 $$
 x^{'}_{k|k}=x^{'}_{k|k-1}\oplus \delta x^{'}_k
 $$
-
+\]
 - **Update the error state covariance**:
 
 $$
 P_{k|k}=(I-K_kH_k)P_{k|k-1}
 $$
 
-- **Reset the error state**: After updating the nominal state, we reset the error state to zero, as its effect has been incorporated into the nominal state. This is crucial for the ESKF approach: $\delta x^{'}_k=0$.
+- **Reset the error state**: After updating the nominal state, we reset the error state to zero, as its effect has been incorporated into the nominal state. This is crucial for the ESKF approach: $\(\delta x^{'}_k=0\)$.
 
 ```python
 class ESKF:
